@@ -1,0 +1,12 @@
+.head-app {
+  align-items: flex-end;
+}
+
+.head-app h1 {
+  flex-grow: 1;
+}
+
+.head-app h2 {
+  font-size: 1.2rem;
+  color: gray;
+}
