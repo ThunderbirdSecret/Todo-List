@@ -45,10 +45,10 @@ export default class TodoItem extends Component {
       </span>
     
       <button type="button"
-              className="btn btn-outline-success btn-sm float-left"
+              className="btn btn-outline-warning btn-sm float-left"
               onClick={this.onMarkPriority}>
                 {priority}
-        <i className="fa fa-fire" />
+        <i className="fa fa-flag" />
       </button>
 
     <button type="button"
@@ -57,6 +57,7 @@ export default class TodoItem extends Component {
               <i className="fa fa-times" />
             </button>
     </span>
+    
   );
 };
 }

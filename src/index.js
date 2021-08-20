@@ -4,9 +4,12 @@ import HeadApp from './components/head-app';
 import ToDoList from './components/todo-list';
 import InputApp from './components/input-app';
 import ItemStatus from './components/item-status';
+import ItemAddForm from './item-add'; 
 import './index.css';
 
 export default  class App extends Component {
+
+  maxId = 100;
   
   state = { 
     todoData: [
@@ -31,6 +34,22 @@ export default  class App extends Component {
   });
 };
 
+addItem = (text) => {
+  const newItem = {//генерировать id
+    label: text,
+    priority: false,
+    id: this.maxId++
+  }
+  
+  this.setState(({todoData}) => { //добавить эл в массив
+    const newAdd = [ 
+      ...todoData,
+      newItem
+    ];
+    return { todoData: newAdd }
+  })
+};
+
   render(){
      return (  
       <div className="todo-app">
@@ -42,7 +61,10 @@ export default  class App extends Component {
 
       <ToDoList todos={this.state.todoData}
       onDeleted={ this.deleteItem} />
+      < ItemAddForm addItem={ this.addItem } />
       </div>
+
+      
     );
   };
 }
