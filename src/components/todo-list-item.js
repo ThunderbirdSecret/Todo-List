@@ -1,31 +1,62 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './todo-list-item.css';
 
-const TodoItem = ( {label, Im = false }) => {
+export default class TodoItem extends Component {
+  state = {//инициализируем состояние на прямую только 1 раз!, в конструкторе или теле класса
+    done: false,      
+    priority: false
+  }
 
-  const Style = {
-    color: Im ? 'pink' : 'black',
-    fontWeight: Im ? 'bold' : 'normal'
+  onLabelClick = () => {
+    this.setState(({done}) => { // метод для изменения/обновления состояния
+      return {
+        done: !done
+      }
+    });
   };
 
+  onMarkPriority = () => {
+    this.setState(({priority}) => {
+      return {
+      priority: !priority
+      }
+    });
+  };
+
+  render () {
+  const { label, onDeleted } = this.props;
+  const { done, priority } = this.state;
+
+  let classNames = 'todo-list-item';
+    if (done) {
+      classNames += ' done'; //!!
+    }
+
+    if (priority) {
+      classNames += 'priority'
+    }
+
   return (
-    <span className="todo-list-item">
-      <span className="todo-list-item-label"
-        style={Style}> 
+    <span className={classNames}>
+      <span 
+        className="todo-list-item-label"
+        onClick={ this.onLabelClick }> 
         { label } 
       </span>
     
       <button type="button"
-              className="btn btn-outline-success btn-sm float-right">
-        <i className="fa fa-exclamation" />
+              className="btn btn-outline-success btn-sm float-left"
+              onClick={this.onMarkPriority}>
+                {priority}
+        <i className="fa fa-fire" />
       </button>
 
     <button type="button"
-                className="btn btn-outline-danger btn-sm float-right">
-              <i className="fa fa-trash-o" />
+                className="btn btn-outline-danger btn-sm float-right"
+                onClick={onDeleted} >
+              <i className="fa fa-times" />
             </button>
     </span>
   );
 };
-
-export default TodoItem;
+}
