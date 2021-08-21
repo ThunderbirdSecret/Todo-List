@@ -1,3 +1,4 @@
 # Todo-List
-Todo list on react; training project
+To run the application, go to the root folder repositore and run the command 
+  $npm start
 # todo-list
