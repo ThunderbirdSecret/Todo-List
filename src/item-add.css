@@ -1,5 +1,10 @@
- .item-add {
-    height: auto;
+ .item-add .bottom-panel {
+    margin-top: 10px;
+  }
+  
+  .bottom-panel .new-todo-label {
+    width: auto;
     flex-grow: 1;
-    margin-top: 1rem;
-}
+    margin-right: 3px;
+  }
+  
